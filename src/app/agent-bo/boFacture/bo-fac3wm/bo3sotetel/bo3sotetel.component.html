@@ -1,0 +1,89 @@
+<app-agent-bo></app-agent-bo>
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- <div class="container">
+<form>
+<div class="input-group pb-modalreglog-input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+    <input type="text" class="form-control"  placeholder="Merci de saisir le n° PO" style="width: 10px; border-radius: 6px;" id="po" name="poo" [(ngModel)]='po' >
+</div>
+<br>
+<button type="button" class="btn btn-secondary"  style="border-radius: 20px;" (click)="getFacture()">Workflow</button>
+
+
+</form>
+</div> -->
+<!-- placeholder="Merci de saisir le n° PO" -->
+
+<div>
+    <form>
+        <input type="text" class="form-control"  
+         style="width: 30%; border-radius: 6px;" id="po" name="poo" [(ngModel)]='po' >
+  <br>
+      <button type="button" class="btn btn-secondary"  style="border-radius: 20px;" (click)="getFacture()">Workflow</button>
+
+    </form>
+  </div>
+
+
+ 
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-timeline">
+                <div class="timeline">
+                    <a class="timeline-content">
+                        <h3 class="title">Agent trésorerie</h3>
+                        <ul>
+                            <li *ngIf="validationtreso" style="text-align: left;">Validé par l'agent trésorerie le: {{factureWfDetails.theTresoValidationDate}}
+                                par {{factureWfDetails.whoTresoHasValidated}}</li>
+
+                        </ul>
+                    </a>
+                </div>
+                <div class="timeline">
+                    <a  class="timeline-content">
+                        <h3 class="title">Agent AP</h3>
+                        <ul>
+                            <li *ngIf="validationAp" style="text-align: left;">Envoyée au l'agent trésorerie le: {{factureWfDetails.datValidationParAp}}
+                                par {{factureWfDetails.whoApHasValidated}}</li>
+                            <li *ngIf="refustreso" style="text-align: left;">Refus par l'agent trésorerie le: {{factureWfDetails.dateRefusParTreso}}
+                                par {{factureWfDetails.whoTresoHasRefuse}}</li>
+
+                        </ul>
+
+                    </a> 
+                </div>
+                <div class="timeline">
+                    <a  class="timeline-content">
+                        <h3 class="title">Agent BOF</h3>
+                       
+                            <ul>
+                                <li style="text-align: left;">Reçue le: {{factureWfDetails.datereception}}, crée par {{factureWfDetails.created_by}} </li>
+                                <li *ngIf="refusAp" style="text-align: left;">Refus par l'agent AP le: {{factureWfDetails.dateRefusParAp}}
+                                     par {{factureWfDetails.whoApHasRefuse}}</li>
+
+                            </ul>
+
+                       
+                    </a>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
