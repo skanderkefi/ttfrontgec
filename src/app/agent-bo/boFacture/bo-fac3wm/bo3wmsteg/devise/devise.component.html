@@ -58,14 +58,13 @@ style="margin-left:70em;width:1em;display:inline-block;"  ><img src="../../../as
             <th  (click)="sort('id')" class="cellules" style="width: 15px;">Id&nbsp;<i class="fa fa-sort" ></i></th>
             <th class="cellules">dossier</th>
             <th class="cellules">fournisseur</th>
-
             <th class="cellules">Status</th> 
-            <th class="cellules">montant</th> 
+            <th class="cellules">montant</th>  
             <th class="cellules">num facture</th>
             <th class="cellules">num PO</th>              
             <th class="cellules">Actions</th> 
           </tr>
-        </thead>
+        </thead> 
     <tbody>
         <tr *ngFor="let fact of Factures3wmTnd | orderBy: key: reverse |paginate: {itemsPerPage:5,currentPage:p};">
             <td class="cellules">{{fact.id}}</td>
@@ -83,6 +82,10 @@ style="margin-left:70em;width:1em;display:inline-block;"  ><img src="../../../as
                 <button type="button" title="Effacer" class="btn btn-light"   (click)="deleteFacture(fact.id)" >  <img  src="../../../assets/images/eff.png"
                       style="border-radius: 10px; border-image-width: 5px;"></button>
 
+                
+                <!-- <button type="button" title="Télécharger" class="btn btn-light" 
+                      style="margin-left:8em;display:inline-block;"  >  <img  src="../../../assets/images/download courrier.png"
+                         style="border-radius: 10px; border-image-width: 5px;"></button> -->
                       <!-- <button type="button" title="WorkFlow" class="btn btn-light" 
                       data-toggle="modal" data-target="#wfmodal"  (click)="factureWorkflow(fact)">  <img  src="../../../assets/images/workflow.png"
                            style="border-radius: 10px; border-image-width: 5px;"></button>

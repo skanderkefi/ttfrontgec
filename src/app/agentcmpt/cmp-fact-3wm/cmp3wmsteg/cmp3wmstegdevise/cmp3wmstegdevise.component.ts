@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
   selector: 'app-cmp3wmstegdevise',
   templateUrl: './cmp3wmstegdevise.component.html',
   styleUrls: ['./cmp3wmstegdevise.component.css']
-})
+}) 
 export class Cmp3wmstegdeviseComponent implements OnInit {
 
   date={"startdate":"","enddate":""}
@@ -96,8 +96,8 @@ export class Cmp3wmstegdeviseComponent implements OnInit {
   
         const doc = new jsPDF()
         
-        autoTable(doc, { html: '#Facture3wmtndTable' })
-        doc.save('tableFacture.pdf')
+        autoTable(doc, { html: '#Facture_STEG' })
+        doc.save('Facture_STEG.pdf')
         
         }
 
@@ -125,7 +125,7 @@ export class Cmp3wmstegdeviseComponent implements OnInit {
         }
 
         validateFacture(){
-
+ 
           this.whosconnected();
           console.log("connected from vald: "+ this.connectedUser);
           

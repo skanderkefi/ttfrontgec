@@ -298,7 +298,7 @@ console.log("all fact = "+this.Factures3wmTnd);
     this.gettedFacture=this.Factures3wmTnd[i];
     }
   }
-
+ 
   console.log("facture out get facture method: "+ this.gettedFacture);
 
   if (this.gettedFacture.dateEnvoieAuAp!="" && this.gettedFacture.dateEnvoieAuAp!=null){

@@ -36,12 +36,12 @@ export class LoginComponent implements OnInit {
       console.log("u r logged in !");
     }else if (this.user.profil=="AP"){
       this.updateUser();
-      this.router.navigate(['/cmpt']);
+      this.router.navigate(['/Cmp3wmstegdevise']);
       console.log("u r logged in !");
     }
     else if (this.user.profil=="TRESO"){
       this.updateUser();
-      this.router.navigate(['/Tresostegtnd']);
+      this.router.navigate(['/Tresostegdevise']);
       console.log("u r logged in !");
     }
   }) .catch((err)=>{

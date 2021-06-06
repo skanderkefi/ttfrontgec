@@ -35,10 +35,10 @@ export class BoFournisseurComponent implements OnInit {
     
     Search(){
       if(this.firstn ==""){
-        this.ngOnInit();
+        this.ngOnInit(); 
       }else if(this.firstn[0]>=0 && this.firstn[0]<=10){
         this.Fournisseurs=this.Fournisseurs.filter(res=>{
-          return res.idFiscale.toLocaleLowerCase().match(this.firstn.toLocaleLowerCase());
+          return res.iderp.toLocaleLowerCase().match(this.firstn.toLocaleLowerCase());
         })
       }else{
         this.Fournisseurs=this.Fournisseurs.filter(res=>{

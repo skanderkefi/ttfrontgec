@@ -2,14 +2,17 @@
 
 <br>
 <br>
-<button type="button" title="Modifier" class="btn btn-light pb-modalreglog-submit" (click)="fournisseurModal(fournisseurToUpdate)" data-toggle="modal" data-target="#myModalcr"
+<div class="tools">
+
+<button type="button" title="Nouveau" class="btn btn-light pb-modalreglog-submit" (click)="fournisseurModal(fournisseurToUpdate)" data-toggle="modal" data-target="#myModalcr"
               style="margin-left: 1100px;" ><img src="../../../assets/images/creation.png"  
                style="border-radius: 10px; border-image-width: 5px;">  </button>
 <br>
 <br>
+<button (click)="convert()" style="margin-left:10em;display:inline-block;"> <img src="../../../assets/images/pdfDownload.png"></button>
 
-<div class="container">
-    <div class="tools">
+
+
         <button title="Importer excel">
           <label>
             <span class="mdi mdi-file-export"> </span>
@@ -17,29 +20,36 @@
             <input hidden type="file" (change)="onFileChange($event)" multiple="false">
           </label>
         </button>
-      </div>
+
+    </div>
+     <br>
+     <div class="container">
+     <button type="button" *ngIf="insertButton" class="btn btn-success" style="border-radius: 50px;" (click)="insertAll()">Insérer</button>
+    </div>
       
 <br>
+ 
 
-  <button type="button" *ngIf="insertButton" class="btn btn-success" style="border-radius: 50px;" (click)="insertAll()">Insérer</button>
-</div> <br>
+ <br>
   <br>
 
+
+
+
     <nav class="navbar">
-        <input class="form-control" type="text" name="searching" [(ngModel)]="firstn" (ngModelChange)="Search()" placeholder="Rechercher par Créateur | Nom" style="width: 260px;border-radius: 20px;">
+        <input class="form-control" type="text" name="searching" [(ngModel)]="firstn" (ngModelChange)="Search()" placeholder="Rechercher par Nom" style="width: 260px;border-radius: 20px;">
     </nav><br>
-    <table class="table table-bordered" >
+    <table class="table table-bordered" id="Bordereaux3wmtndTable">
         <thead>
           <tr>
             <th  (click)="sort('id')" style="width: 400px;">Id&nbsp;<i class="fa fa-sort"></i></th>
             <th>Nom</th>
             <th>Categorie</th>
-            <th>ID fiscale</th>
+            <th>ID fiscale</th> 
             <th>Adresse</th>
             <th>Nationnalite</th>
-            <th>créé par</th>
-            <th>créé à</th>
-            <th>mis à jour à</th>
+            <th>créé le</th>
+            <th>mis à jour le</th>
             <th class="cellules">Actions</th>
 
   
@@ -53,7 +63,6 @@
             <td>{{f.idFiscale}}</td>
             <td>{{f.adresse}}</td>
             <td>{{f.nationnalite}}</td>
-            <td>{{f.createdBy}}</td>
             <td>{{f.createdAt}}</td>
             <td>{{f.updatedAt}}</td>
             <td><button type="button" title="Modifier" class="btn btn-light pb-modalreglog-submit" (click)="fournisseurModal(f)" data-toggle="modal" data-target="#myModalmodif"
@@ -89,84 +98,84 @@
                               </button>
                           </div>
                           <div class="modal-body">
-                              <form class="pb-modalreglog-form-reg">
-                                  
-                                  <div class="row mb-4">
+                            <form class="pb-modalreglog-form-reg">
+                                
+                               
+                                <div class="row mb-4">
+
                                     <div class="col">
-                                      <div class="form-outline">
-                                      <label for="id">Id</label>
-                                      <div class="input-group pb-modalreglog-input-group">
-                                          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                          <input type="text" class="form-control " id="id" placeholder="Id" name="id" [(ngModel)]='fournisseurToUpdate.iderp' readonly>
-                                      </div>
-                                  </div></div>
-                                  <div class="col">
+                                        <div class="form-outline">
+                                      <div class="form-group">
+                                          <label for="po">Numéro Ordre de paiement</label>
+                                          <div class="input-group pb-modalreglog-input-group">
+                                              <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                              <input type="text" class="form-control" id="po" placeholder="n° PO" name="po" [(ngModel)]='fournisseurToUpdate.numPo'   >
+                                              <br>
+                                              <!-- <br>
+                                               <div class="error" *ngIf="poupd.errors?.required && poupd.touched" 
+                                               style="color:firebrick;" >Obligatoire !</div> -->
+                                          </div>
+                                      </div></div></div>
+                                    
+                                <div class="col">
                                     <div class="form-outline">
-                                      <label for="name">Nom</label>
-                                      <div class="input-group pb-modalreglog-input-group">
-                                          <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                          <input type="text" class="form-control" id="name" placeholder="Nom" name="name" [(ngModel)]='fournisseurToUpdate.name'>
-                                      </div>
-                                  </div></div></div>
-                                  <div class="row mb-4">
+                                    <label for="categorie">Catégorie</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input type="text" class="form-control" id="categorie" placeholder="Catégorie" name="categorie" [(ngModel)]='fournisseurToUpdate.categorie'>
+                                    </div>
+                                </div></div></div>
+                                <div class="row mb-4">
                                     <div class="col">
                                       <div class="form-outline">
-                                      <label for="categorie">Catégorie</label>
-                                      <div class="input-group pb-modalreglog-input-group">
-                                          <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                          <input type="text" class="form-control" id="categorie" placeholder="Catégorie" name="categorie" [(ngModel)]='fournisseurToUpdate.categorie'>
-                                      </div></div>
-                                  </div>
-                                  <div class="col">
-                                    <div class="form-outline">
-                                      <label for="idf">Id Fiscale</label>
-                                      <div class="input-group pb-modalreglog-input-group">
-                                          <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                          <input type="text" class="form-control" id="idf" placeholder="Id fiscale" name="idf" [(ngModel)]='fournisseurToUpdate.idFiscale' #idfiscl="ngModel" required  >
-                                          <br>
-                                          <br>
-                                           <div class="error" *ngIf="idfiscl.errors?.required && idfiscl.touched" 
-                                           style="color:firebrick;" >Obligatoire !</div>
-                                      </div>
-                                  </div></div></div>
-                                  <div class="row mb-4">
-                                    <div class="col">
-                                      <div class="form-outline">
-                                    <label for="adr">Adresse</label>
+                                    <label for="idf">Id Fiscale</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" id="adr" placeholder="Adresse" name="adr" [(ngModel)]='fournisseurToUpdate.adresse'>
+                                        <input type="text" class="form-control" id="idf" placeholder="Id fiscale" name="idf" [(ngModel)]='fournisseurToUpdate.idFiscale' #idfiscupd="ngModel" required  >
+                                        <br>
+                                        <br>
+                                         <div class="error" *ngIf="idfiscupd.errors?.required && idfiscupd.touched" 
+                                         style="color:firebrick;" >Obligatoire !</div>
                                     </div>
                                 </div></div>
                                 <div class="col">
                                     <div class="form-outline">
-                                    <label for="nat">Nationnalité</label>
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" id="nat" placeholder="Nationnalité" name="nat" [(ngModel)]='fournisseurToUpdate.nationnalite'> 
-                                    </div>
-                                </div></div></div>
-                              
-                                <div class="form-group">
-                                   <label for="poupd">Numéro Ordre de paiement</label>
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                        <input type="text" class="form-control" id="poupd" placeholder="n° PO" name="po" [(ngModel)]='fournisseurToUpdate.numPo' #poupd="ngModel" required  >
-                                        <br>
-                                        <br>
-                                         <div class="error" *ngIf="poupd.errors?.required && poupd.touched" 
-                                         style="color:firebrick;" >Obligatoire !</div>
-                                    </div>
-                                </div>
+                                  <label for="adr">Adresse</label>
+                                  <div class="input-group pb-modalreglog-input-group">
+                                      <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                      <input type="text" class="form-control" id="adr" placeholder="Adresse" name="adr" [(ngModel)]='fournisseurToUpdate.adresse'>
+                                  </div>
+                              </div></div></div>
+                              <div class="row mb-4">
+                                <div class="col">
+                                  <div class="form-outline">
+                                  <label for="nat">Nationnalité</label>
+                                  <div class="input-group pb-modalreglog-input-group">
+                                      <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                      <input type="text" class="form-control" id="nat" placeholder="Nationnalité" name="nat" [(ngModel)]='fournisseurToUpdate.nationnalite'> 
+                                  </div>
+                              </div></div>
                              
+
+                                <div class="col">
+                                      <div class="form-outline">
+                                    <label for="name">Nom</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input type="text" class="form-control" id="name" placeholder="Nom" name="name" [(ngModel)]='fournisseurToUpdate.name'>
+                                    </div>
+                                </div></div>
+
+                              </div>
                             
-                                
-                              </form>
+                          
+                              
+                            </form>
                           </div>
                           <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                               <button type="button" class="btn btn-primary" (click)="updateFournisseur()" routerLink="/fournisseurs"
-                              *ngIf="!poupd.errors?.required && !idfiscl.errors?.required">Modifier</button>
+                              *ngIf="!idfiscupd.errors?.required">Modifier</button>
                           </div>
                       </div>
                   </div>
@@ -184,14 +193,21 @@
                                 
                                
                                 <div class="row mb-4">
+
                                     <div class="col">
-                                      <div class="form-outline">
-                                    <label for="name">Nom</label>
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="text" class="form-control" id="name" placeholder="Nom" name="name" [(ngModel)]='fournisseurToCreate.name'>
-                                    </div>
-                                </div></div>
+                                        <div class="form-outline">
+                                      <div class="form-group">
+                                          <label for="po">Numéro Ordre de paiement</label>
+                                          <div class="input-group pb-modalreglog-input-group">
+                                              <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                              <input type="text" class="form-control" id="po" placeholder="n° PO" name="po" [(ngModel)]='fournisseurToCreate.numPo' #po="ngModel" required  >
+                                              <br>
+                                              <br>
+                                               <div class="error" *ngIf="po.errors?.required && po.touched" 
+                                               style="color:firebrick;" >Obligatoire !</div>
+                                          </div>
+                                      </div></div></div>
+                                    
                                 <div class="col">
                                     <div class="form-outline">
                                     <label for="categorie">Catégorie</label>
@@ -231,19 +247,17 @@
                                   </div>
                               </div></div>
                              
-                              <div class="col">
-                                <div class="form-outline">
-                              <div class="form-group">
-                                  <label for="po">Numéro Ordre de paiement</label>
-                                  <div class="input-group pb-modalreglog-input-group">
-                                      <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                      <input type="text" class="form-control" id="po" placeholder="n° PO" name="po" [(ngModel)]='fournisseurToCreate.numPo' #po="ngModel" required  >
-                                      <br>
-                                      <br>
-                                       <div class="error" *ngIf="po.errors?.required && po.touched" 
-                                       style="color:firebrick;" >Obligatoire !</div>
-                                  </div>
-                              </div></div></div></div>
+
+                                <div class="col">
+                                      <div class="form-outline">
+                                    <label for="name">Nom</label>
+                                    <div class="input-group pb-modalreglog-input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input type="text" class="form-control" id="name" placeholder="Nom" name="name" [(ngModel)]='fournisseurToCreate.name'>
+                                    </div>
+                                </div></div>
+
+                              </div>
                             
                           
                               

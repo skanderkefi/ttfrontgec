@@ -23,7 +23,6 @@
             <th class="cellules">Téléphone</th>
             <th class="cellules">Profil</th>
             <th class="cellules">Email</th>
-            <th class="cellules">Créé par</th>
             <th class="cellules">Actions</th> 
  
              <!-- | orderBy: key: reverse |paginate: {itemsPerPage:5,currentPage:p};" -->
@@ -39,12 +38,11 @@
             <td class="cellules">{{userr.phone}}</td>
             <td class="cellules">{{userr.profil}}</td>
             <td class="cellules">{{userr.email}}</td>
-            <td class="cellules">{{userr.created_by}}</td>
             <td class="cellules">
-              <button type="button" title="Modifier" class="btn btn-light pb-modalreglog-submit" (click)="userModal(userr)" data-toggle="modal" data-target="#myModal"
+              <!-- <button type="button" title="Modifier" class="btn btn-light pb-modalreglog-submit" (click)="userModal(userr)" data-toggle="modal" data-target="#myModal"
                ><img src="../../../assets/images/modifier.png"  
                style="border-radius: 10px; border-image-width: 5px;">  </button>
-               
+                -->
               <button type="button" title="Effacer" class="btn btn-light"   (click)="deleteUser(userr.id)">  <img  src="../../../assets/images/eff.png"  style="border-radius: 10px; border-image-width: 5px;"></button>
               </td> </tr>
     
@@ -219,13 +217,13 @@
                                 
                                 <div class="row mb-4">
                                     
-                                <div class="col">
-                                    <div class="form-outline">
-                                    <label for="createdBy">Créé par</label>
-                                    <div class="input-group pb-modalreglog-input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="text" class="form-control" id="createdBy" placeholder="Créé par" name="createdBy" [(ngModel)]='userToCreate.created_by'>
-                                    </div></div></div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                          <label for="profil">Profil</label>
+                                          <div class="input-group pb-modalreglog-input-group">
+                                              <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                                              <input type="text" class="form-control" id="profil" placeholder="Profil" name="profil" [(ngModel)]='userToCreate.profil'>
+                                          </div></div></div>
                                 
                                
                                     <div class="col">
@@ -284,16 +282,8 @@
                                           <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
                                           <input type="text" class="form-control" id="nom" placeholder="Nom" name="profil" [(ngModel)]='userToCreate.name'>
                                       </div></div></div>
-                              <div class="col">
-                                <div class="form-outline">
-                                  <label for="profil">Profil</label>
-                                  <div class="input-group pb-modalreglog-input-group">
-                                      <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                                      <input type="text" class="form-control" id="profil" placeholder="Profil" name="profil" [(ngModel)]='userToCreate.profil'>
-                                  </div></div></div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col">
+                             
+                                      <div class="col">
                                         <div class="form-outline">
                                 <label for="image">Image (maximum <u>1000 Ko</u>)</label>
                                 <div class="input-group pb-modalreglog-input-group">
@@ -303,7 +293,9 @@
                                     <div class="error" *ngIf="notImageToCreate" style="color:firebrick;"> Le fichier doit être une image !</div>
 
                                 </div></div></div>
-                            </div> 
+
+                                </div>
+                                
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             <button type="submit" class="btn btn-primary" *ngIf="!notImageToCreate  && !modps.errors?.required && !matr.errors?.required">Créer</button>

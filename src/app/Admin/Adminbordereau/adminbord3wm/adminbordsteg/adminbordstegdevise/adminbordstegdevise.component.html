@@ -1,18 +1,12 @@
 <app-adminnavbar></app-adminnavbar>
 <br>
 <div class="tools">
-<button type="button" title="Créer" class="btn btn-light pb-modalreglog-submit" (click)="bordereauModal(bordereauToCreate)" data-toggle="modal" data-target="#myModalcr"
-style="margin-left:70em;width:1em;display:inline-block;"  ><img src="../../../assets/images/addBordereau.png"  
-               style="border-radius: 10px; border-image-width: 5px;">  </button>
 
          
 <button (click)="exportData('Bordereaux3wmtndTable')" style="margin-left:-65em;width:1em;display:inline-block;" >
                     <img src="../../../assets/images/excel.png">
 </button>
 
-               
-             
-              
              
 <button (click)="convert()" style="margin-left:8em;display:inline-block;"> <img src="../../../assets/images/pdfDownload.png"></button>
             </div>  
@@ -32,9 +26,6 @@ style="margin-left:70em;width:1em;display:inline-block;"  ><img src="../../../as
 
             <th class="cellules">Status</th> 
             <th class="cellules">Créé le</th> 
-            <th class="cellules">Mis à jour le</th>
-            <th class="cellules">Créé par</th>              
-            <th class="cellules">Actions</th> 
 
 
 
@@ -49,20 +40,6 @@ style="margin-left:70em;width:1em;display:inline-block;"  ><img src="../../../as
             <td class="cellules">{{bord.reference}}</td>
             <td class="cellules">{{bord.status}}</td>
             <td class="cellules">{{bord.createdAt}}</td>
-            <td class="cellules">{{bord.updatedAt}}</td>
-            <td class="cellules">{{bord.createdBy}}</td>
-            <td class="cellules">
-                <button type="button" title="Envoyer" class="btn btn-light pb-modalreglog-submit"   
-                (click)="envoyerBordereau(bord.id)"><img src="../../../assets/images/sendBordereau.png"  
-                 style="border-radius: 10px; border-image-width: 5px;">  </button>
-                 
-                <button type="button" title="Effacer" class="btn btn-light"   (click)="deleteBordereau(bord.id)">  <img  src="../../../assets/images/eff.png"
-                      style="border-radius: 10px; border-image-width: 5px;"></button>
-                <button type="button" title="Factures" class="btn btn-light pb-modalreglog-submit"   
-                      (click)="showFacture()" data-toggle="modal" data-target="#myModalFactures"><img src="../../../assets/images/show factures.png"  
-                       style="border-radius: 10px; border-image-width: 5px;">  </button>
-                </td>
-
             
 
         </tr>

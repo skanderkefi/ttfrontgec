@@ -1,17 +1,19 @@
 <app-agentcmpt></app-agentcmpt>
 <br>
-<div class="tools">
 
-         
-<button (click)="exportData('Facture3wmtndTable')" 
-style="margin-left:-65em;width:1em;display:inline-block;" >
-                    <img src="../../../assets/images/excel.png">
-</button>
-
-           
-<button (click)="convertToPdf()" style="margin-left:8em;display:inline-block;">
-     <img src="../../../assets/images/pdfDownload.png"></button>
-            </div>  
+<div class="container tools">
+   
+             
+    
+    <img src="../../../assets/images/excel.png"  
+                style="border-radius: 10px; border-image-width: 5px;">
+    
+     
+                   
+                <img src="../../../assets/images/pdfDownload.png"  
+                style="border-radius: 10px; border-image-width: 5px;">
+                </div>   
+              
               <br>
                <hr>
 <br>
@@ -51,7 +53,7 @@ style="margin-left:-65em;width:1em;display:inline-block;" >
             </div>  
           </div> </form> 
     </nav><br>
-    <table id="Facture3wmtndTable" class="table table-bordered table-light table-hover " style="width: 100%;">
+    <table id="Facture_STEG" class="table table-bordered table-light table-hover " style="width: 100%;">
         <thead>
           <tr>
             <th  (click)="sort('id')" class="cellules" style="width: 15px;">Id&nbsp;<i class="fa fa-sort" ></i></th>
@@ -60,7 +62,6 @@ style="margin-left:-65em;width:1em;display:inline-block;" >
             <th class="cellules">num facture</th>
             <th class="cellules">num PO</th>              
             <th class="cellules" style="text-align: center;">Actions</th> 
-            <th class="cellules">Télécharger</th> 
 
           </tr>
         </thead>
@@ -82,6 +83,10 @@ style="margin-left:-65em;width:1em;display:inline-block;" >
                 data-toggle="modal" data-target="#rjctModal" (click)="factureRejectModal(fact)">  <img  src="../../../assets/images/reject.png"
                      style="border-radius: 10px; border-image-width: 5px;"></button>
                
+
+                     <button type="button" title="Télécharger" class="btn btn-light" 
+                     (click)="convertToPdf()" style="margin-left:8em;display:inline-block;"  >  <img  src="../../../assets/images/download courrier.png"
+                        style="border-radius: 10px; border-image-width: 5px;"></button>
                 </td>
  
         </tr>
@@ -143,7 +148,7 @@ style="margin-left:-65em;width:1em;display:inline-block;" >
                                           <span aria-hidden="true">&times;</span>
                                       </button>
                                   </div>
-                                  <div class="modal-body">
+                                  <div class="modal-body"> 
                                     <label for="codeAp">Code</label>
                                     <div class="input-group pb-modalreglog-input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>

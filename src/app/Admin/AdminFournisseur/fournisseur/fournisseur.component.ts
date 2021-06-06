@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../../../dataservice/data.service";
 import {Fournisseur} from './../../../models/fournisseur.model'
- 
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-fournisseur',
@@ -22,11 +23,11 @@ export class FournisseurComponent implements OnInit {
   fournisseurToUpdate={"iderp":"","name":"","categorie":"","idFiscale":"","adresse":"",
   "nationnalite":"","createdBy":"","createdAt":"","updatedAt":"","numPo":""};
   fournisseurToCreate={"iderp":"","name":"","categorie":"","idFiscale":"","adresse":"",
-  "nationnalite":"","createdBy":"","createdAt":Date.now(),"updatedAt":"","numPo":""}
+  "nationnalite":"","createdBy":"","createdAt":Date.now(),"updatedAt":"","numPo":"","recieved":"Non reçu"}
 
 
   constructor(public dataService:DataService) { }
-
+ 
   ngOnInit(): void {
     this.showFournisseur();
   }
@@ -44,7 +45,7 @@ export class FournisseurComponent implements OnInit {
         this.ngOnInit();
       }else if(this.firstn[0]>=0 && this.firstn[0]<=10){
         this.Fournisseurs=this.Fournisseurs.filter(res=>{
-          return res.createdBy.toLocaleLowerCase().match(this.firstn.toLocaleLowerCase());
+          return res.iderp.toLocaleLowerCase().match(this.firstn.toLocaleLowerCase());
         })
       }else{
         this.Fournisseurs=this.Fournisseurs.filter(res=>{
@@ -133,6 +134,17 @@ this.createFournisseur();
 
 )
 }
+
+
+
+convert() {
+  
+  const doc = new jsPDF()
+  
+  autoTable(doc, { html: '#Bordereaux3wmtndTable' })
+  doc.save('table.pdf')
+  
+  }
 
 
 } 

@@ -78,7 +78,7 @@ export class stcrDeviseComponent implements OnInit {
       this.Factures3wmTnd=this.Factures3wmTnd.filter(res=>{
         return res.num_po.toLocaleLowerCase().match(this.firstn.toLocaleLowerCase());
       })
-    }
+    } 
   }
  
 
@@ -101,9 +101,9 @@ export class stcrDeviseComponent implements OnInit {
         this.Factures3wmTnd.splice(i,1)
       }
       console.log(this.Factures3wmTnd);
-    })
+    }) 
     
-     
+      
     } 
 
     createFacture(){
@@ -155,7 +155,7 @@ export class stcrDeviseComponent implements OnInit {
         doc.save('tableFacture.pdf')
         
         }
-
+ 
         key: string='id';
         reverse: boolean=false;
         sort(key){

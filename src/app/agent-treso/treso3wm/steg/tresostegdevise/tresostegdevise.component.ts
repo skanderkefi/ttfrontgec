@@ -115,18 +115,18 @@ console.log("facture getted = "+this.factureToValidate);
   
         const doc = new jsPDF()
         
-        autoTable(doc, { html: '#Facture3wmtndTable' })
-        doc.save('tableFacture.pdf')
+        autoTable(doc, { html: '#Facture_STEG' })
+        doc.save('Facture_STEG.pdf')
         
         }
-
+ 
         key: string='id';
         reverse: boolean=false;
         sort(key){
           this.key=key;
           this.reverse= !this.reverse;
-        }
-
+        } 
+ 
         rejectFacture(){
           this.whosconnected();
           console.log("matricule = "+this.connectedUser.matricule);
@@ -156,7 +156,7 @@ console.log("facture getted = "+this.factureToValidate);
           }) 
           // location.reload();
 
-          this.fournisseurrecieved.recieved="reçue"
+          this.fournisseurrecieved.recieved="Reçu"
           console.log("fournisseur not in modal : "+this.fournisseurrecieved.numPo);
           this.dataService.updateFournisseur(this.fournisseurrecieved).subscribe((msg: any[])=>{
             console.log(msg);

@@ -15,7 +15,7 @@ export class AdminstegdeviseComponent implements OnInit {
  
   date={"startdate":"","enddate":""}
   fournisseur:any;
-  selectedFile: File;
+  selectedFile: File; 
   Factures3wmdevise:any[]=[];
   firstn:any; 
   p:number=1;
@@ -65,9 +65,7 @@ export class AdminstegdeviseComponent implements OnInit {
  
   ngOnInit(): void {
     this.showFacture();
-    this.showObjects();
-    this.showPieces();
-   
+    
   }
 
   onChange() {
@@ -89,7 +87,7 @@ export class AdminstegdeviseComponent implements OnInit {
     this.dataService.showFacture3wm().subscribe((data: any[])=>{
       console.log(data);
       for(let i=0; i<data.length; i++){
-        if(data[i].dossier=="3WM DEVISE SOTETEL" )
+        if(data[i].dossier=="3WM STEG DEVISE" )
         this.Factures3wmdevise[i]=data[i];
       }
       for(let i=0; i<this.Factures3wmdevise.length; i++){
@@ -195,7 +193,7 @@ export class AdminstegdeviseComponent implements OnInit {
           console.log(response);
           this.factureToCreate.pathPdf=response.body.toString();
         }
-        );
+        ); 
       }
 
       searchPerDate(){
